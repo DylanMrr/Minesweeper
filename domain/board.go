@@ -1,7 +1,10 @@
 package domain
 
 type Board struct {
-	Cells [][]*Cell
+	Cells           [][]*Cell
+	NotOpenMines    int
+	MarkedMines     int
+	NotCheckedCells int
 }
 
 func NewBoard() *Board {

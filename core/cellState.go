@@ -6,6 +6,5 @@ const (
 	Empty CellState = iota
 	NearMine
 	Mine
-	Checked
 	Lose
 )

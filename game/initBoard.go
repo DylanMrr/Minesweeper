@@ -17,6 +17,8 @@ func InitBoard(size, minesCount int, board *domain.Board) {
 			(*board).Cells[i][j] = domain.NewCell(core.Empty, 0)
 		}
 	}
+	(*board).NotOpenMines = minesCount
+	(*board).NotCheckedCells = size * size
 	rand.Seed(time.Now().UnixNano())
 	for k := 0; k < minesCount; k++ {
 		f := true

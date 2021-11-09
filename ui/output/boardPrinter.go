@@ -25,13 +25,20 @@ func PrintBoard(board *domain.Board) {
 		}
 		fmt.Print("|")
 		for j := 0; j < len((*board).Cells[i]); j++ {
-			if (*board).Cells[i][j].State == core.Empty {
+			if (*board).Cells[i][j].State == core.Lose {
+				fmt.Print("x ")
+				continue
+			}
+			if (*board).Cells[i][j].IsMarked {
+				fmt.Print("! ")
+			} else if (*board).Cells[i][j].IsChecked {
+				if (*board).Cells[i][j].State == core.NearMine {
+					fmt.Print((*board).Cells[i][j].MinesCount, " ")
+				} else {
+					fmt.Print("  ")
+				}
+			} else {
 				fmt.Print(". ")
-			} else if (*board).Cells[i][j].State == core.Mine {
-				fmt.Print("X ")
-			} else if (*board).Cells[i][j].State == core.NearMine {
-				fmt.Print(". ")
-				//fmt.Print((*board).Cells[i][j].MinesCount, " ")
 			}
 		}
 		fmt.Println()
